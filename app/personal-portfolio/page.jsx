@@ -12,20 +12,24 @@ const PersonalPortfolio = () => {
   const [activeRoute, setActiveRoute] = useState("about");
   const [lightMode, setLightMode] = useState(false);
 
-  const DarkMode = () => { 
+  const DarkMode = () => {
     document.querySelector("body").setAttribute("data-theme", "dark");
   };
   const LightMode = () => {
     document.querySelector("body").setAttribute("data-theme", "light");
   };
   const toggleTheme = () => {
-    if (lightMode) {
-      LightMode();
+    const newLightMode = !lightMode; // Get the new mode
+    setLightMode(newLightMode); // Update the state
+
+    // Set the body attribute based on the new state
+    if (newLightMode) {
+      LightMode(); // If newLightMode is true, set light mode
     } else {
-      DarkMode();
+      DarkMode(); // Otherwise, set dark mode
     }
-    setLightMode(!lightMode);
   };
+
   return (
     <>
       <main>
@@ -33,71 +37,32 @@ const PersonalPortfolio = () => {
         <div className="main-content mt-[100px]">
           <nav className="navbar">
             <ul className="navbar-list">
-              <li
-                className="navbar-item"
-                onClick={() => setActiveRoute("about")}
-              >
-                <button
-                  className={`navbar-link ${
-                    activeRoute === "about" ? "active" : ""
-                  }`}
-                >
+              <li className="navbar-item" onClick={() => setActiveRoute("about")}>
+                <button className={`navbar-link ${activeRoute === "about" ? "active" : ""}`}>
                   About
                 </button>
               </li>
 
-              <li
-                className="navbar-item"
-                onClick={() => setActiveRoute("resume")}
-              >
-                <button
-                  className={`navbar-link ${
-                    activeRoute === "resume" ? "active" : ""
-                  }`}
-                >
-                  {" "}
+              <li className="navbar-item" onClick={() => setActiveRoute("resume")}>
+                <button className={`navbar-link ${activeRoute === "resume" ? "active" : ""}`}>
                   Resume
                 </button>
               </li>
 
-              <li
-                className="navbar-item"
-                onClick={() => setActiveRoute("portfolio")}
-              >
-                <button
-                  className={`navbar-link ${
-                    activeRoute === "portfolio" ? "active" : ""
-                  }`}
-                >
-                  {" "}
+              <li className="navbar-item" onClick={() => setActiveRoute("portfolio")}>
+                <button className={`navbar-link ${activeRoute === "portfolio" ? "active" : ""}`}>
                   Portfolio
                 </button>
               </li>
 
-              <li
-                className="navbar-item"
-                onClick={() => setActiveRoute("blog")}
-              >
-                <button
-                  className={`navbar-link ${
-                    activeRoute === "blog" ? "active" : ""
-                  }`}
-                >
-                  {" "}
+              <li className="navbar-item" onClick={() => setActiveRoute("blog")}>
+                <button className={`navbar-link ${activeRoute === "blog" ? "active" : ""}`}>
                   Blog
                 </button>
               </li>
 
-              <li
-                className="navbar-item"
-                onClick={() => setActiveRoute("contact")}
-              >
-                <button
-                  className={`navbar-link ${
-                    activeRoute === "contact" ? "active" : ""
-                  }`}
-                >
-                  {" "}
+              <li className="navbar-item" onClick={() => setActiveRoute("contact")}>
+                <button className={`navbar-link ${activeRoute === "contact" ? "active" : ""}`}>
                   Contact
                 </button>
               </li>
@@ -107,11 +72,7 @@ const PersonalPortfolio = () => {
               onClick={toggleTheme}
               whileTap={{ rotate: 360 }}
             >
-              {lightMode ? (
-                <FaSun className="sun" />
-              ) : (
-                <FaMoon className="moon" />
-              )}
+              {lightMode ? <FaMoon className="moon" /> : <FaSun className="sun" />}
             </motion.button>
           </nav>
           {activeRoute === "about" ? <About /> : ""}
