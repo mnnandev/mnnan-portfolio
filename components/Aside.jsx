@@ -1,13 +1,14 @@
 'use client'
 import { avtar } from "@/public/assets/Data";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { MdMailOutline, MdPhone, MdCalendarToday, MdLocationOn } from "react-icons/md";
-import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaInstagram, FaAngleDown } from "react-icons/fa";
 
 const Aside = () => {
+  const [show,setShow] = useState(false)
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${show ? 'active':''}`}>
       <div className="sidebar-info">
         <Image
           src={avtar}
@@ -20,12 +21,12 @@ const Aside = () => {
           <h1 className="name">Manan Mazhar</h1>
           <p className="title">Web Developer</p>
         </div>
-        <button className="info_more-btn">
-          <span>Show Contacts</span>
+        <button className="info_more-btn" onClick={()=>setShow(!show)}>
+          <FaAngleDown className='text-[#ffda6b]'/>
         </button>
       </div>
 
-      <div className="sidebar-info_more ">
+      <div className="sidebar-info_more">
         <ul className="contacts-list ">
           <li className="contact-item ">
             <div className="icon-box">
@@ -72,17 +73,17 @@ const Aside = () => {
         <ul className="social-list ">
           <li className="social-item">
             <a href="#" className="social-link">
-              <FaFacebook color="gray"  />
+              <FaFacebook   className="text-gray-300"/>
             </a>
           </li>
           <li className="social-item">
             <a href="#" className="social-link">
-              <FaTwitter color="gray"  />
+              <FaTwitter className="text-gray-300"  />
             </a>
           </li>
           <li className="social-item">
             <a href="#" className="social-link">
-              <FaInstagram color="gray"  />
+              <FaInstagram className="text-gray-300"  />
             </a>
           </li>
         </ul>

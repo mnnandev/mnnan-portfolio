@@ -35,7 +35,7 @@
   ), hsl(240, 2%, 13%);
   --bg-gradient-yellow-1: linear-gradient(
     to bottom right, 
-    hsl(45, 100%, 71%) 0%, 
+    #ffda6b 0%, 
     hsla(36, 100%, 69%, 0) 50%
   );
   --bg-gradient-yellow-2: linear-gradient(
@@ -53,6 +53,7 @@
     hsl(45, 100%, 72%), 
     hsl(35, 100%, 68%)
   );
+  --nav-bg:hsla(240, 1%, 17%, 0.75);
 
   /* solid */
 
@@ -108,6 +109,36 @@
 
   --transition-1: 0.25s ease;
   --transition-2: 0.5s ease-in-out;
+  
+}
+[data-theme ="light"] {
+  --smoky-black: hsl(0, 0%, 100%);
+  --eerie-black-1: #ffffff;
+  --eerie-black-2: #ffffff;
+  --light-gray: hsl(0, 0%, 11%);
+  --light-gray-70: hsla(0, 0%, 0%, 0.7);
+  --white-1: hsl(0, 0%, 8%);
+  --white-2: hsl(0, 0%, 0%);
+  --bg-gradient-onyx: linear-gradient(
+    to bottom right, 
+    hsl(0, 0%, 89%) 3%, 
+    hsl(0, 0%, 100%) 97%
+  );
+  --onyx: #e3e3e3;
+  --nav-bg:hsl(0, 0%, 100%);
+  --jet: hsla(0, 0%, 73%, 0.753);
+  --border-gradient-onyx: linear-gradient(
+    to bottom right, 
+    hsla(0, 0%, 99%, 0.803) 0%, 
+    hsla(0, 0%, 100%, 0) 50%
+  );
+  --bg-gradient-jet: linear-gradient(
+    to bottom right, 
+    hsla(0, 0%, 100%, 0.977) 0%, 
+    hsla(0, 0%, 100%, 0.866) 100%
+  ), hsl(0, 0%, 100%);
+  --orange-yellow-crayola: hsl(45, 100%, 34%);
+
 
 }
 
@@ -196,7 +227,12 @@ article {
   box-shadow: var(--shadow-1);
   z-index: 1;
 }
-
+.sun {
+  color: #ffda6b;
+}
+.moon {
+  color: rgb(42, 42, 42);
+}
 .icon-box::before {
   content: "";
   position: absolute;
@@ -448,7 +484,11 @@ main {
 .social-item .social-link:hover { color: var(--light-gray); }
 
 
-
+@media screen and (max-width:1024px) {
+  .sidebar-info_more {
+    margin-top: 30px;
+  }
+}
 
 
 /*-----------------------------------*\
@@ -460,8 +500,10 @@ main {
   bottom: 0;
   left: 0;
   width: 100%;
-  background: hsla(240, 1%, 17%, 0.75);
-  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  background: var(--nav-bg);
+  backdrop-filter: blur(30px);
   border: 1px solid var(--jet);
   border-radius: 12px 12px 0 0;
   box-shadow: var(--shadow-2);
@@ -503,6 +545,9 @@ main {
 @media screen and (max-width:1024px) {
   .mt20 {
     margin-top: 0px;
+  }
+  .navbar {
+    justify-content: flex-start;
   }
 }
 .about-text {
