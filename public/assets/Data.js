@@ -24,7 +24,7 @@ const projectcategories = [
     
   },
   {
-    category: "Web development",
+    category: "Frontend",
     projectDetail: [
       {
         src: "/assets/images/project-1.jpg",
@@ -45,7 +45,7 @@ const projectcategories = [
     ],
   },
   {
-    category: "Web Design",
+    category: "Wordpress",
     projectDetail: [
         {
           src: "/assets/images/project-1.jpg",
@@ -67,7 +67,7 @@ const projectcategories = [
     
   },
   {
-    category: "Applications",
+    category: "Mern Stack",
     projectDetail: [
         {
           src: "/assets/images/project-1.jpg",

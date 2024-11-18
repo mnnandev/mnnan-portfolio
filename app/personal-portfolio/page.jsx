@@ -33,8 +33,11 @@ const PersonalPortfolio = () => {
   return (
     <>
       <main>
+     
         <Aside />
         <div className="main-content mt-[100px]">
+        <span class="red-circle"></span>
+        <span class="purple-circle"></span>
           <nav className="navbar">
             <ul className="navbar-list">
               <li className="navbar-item" onClick={() => setActiveRoute("about")}>

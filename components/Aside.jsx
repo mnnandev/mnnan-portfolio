@@ -3,7 +3,7 @@ import { avtar } from "@/public/assets/Data";
 import Image from "next/image";
 import React, { useState } from "react";
 import { MdMailOutline, MdPhone, MdCalendarToday, MdLocationOn } from "react-icons/md";
-import { FaFacebook, FaTwitter, FaInstagram, FaAngleDown } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaInstagram, FaAngleDown, FaLinkedin } from "react-icons/fa";
 
 const Aside = () => {
   const [show,setShow] = useState(false)
@@ -64,16 +64,16 @@ const Aside = () => {
               <MdLocationOn color="goldenrod"  />
             </div>
             <div className="contact-info">
-              <p className="contact-title">Location</p>
-              <address>Sacramento, California, USA</address>
+              <p className="contact-title">Vehair</p>
+              <address>vehari,punjab,pakistan</address>
             </div>
           </li>
         </ul>
 
         <ul className="social-list ">
           <li className="social-item">
-            <a href="#" className="social-link">
-              <FaFacebook   className="text-gray-300"/>
+            <a href="https://www.linkedin.com/in/manan-mazhar-453b9b2b2/" className="social-link">
+              <FaLinkedin   className="text-gray-300"/>
             </a>
           </li>
           <li className="social-item">
