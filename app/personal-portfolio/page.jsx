@@ -6,38 +6,46 @@ import Portfolio from "@/components/Portfolio";
 import Resume from "@/components/Resume";
 import { motion } from "framer-motion";
 import { FaSun, FaMoon } from "react-icons/fa";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const PersonalPortfolio = () => {
   const [activeRoute, setActiveRoute] = useState("about");
   const [lightMode, setLightMode] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false); // Ensure no flicker
 
-  const DarkMode = () => {
-    document.querySelector("body").setAttribute("data-theme", "dark");
+  // Apply theme based on state
+  const applyTheme = (isLightMode) => {
+    const theme = isLightMode ? "light" : "dark";
+    document.querySelector("body").setAttribute("data-theme", theme);
   };
-  const LightMode = () => {
-    document.querySelector("body").setAttribute("data-theme", "light");
-  };
+
+  // Toggle theme and save preference in localStorage
   const toggleTheme = () => {
-    const newLightMode = !lightMode; // Get the new mode
-    setLightMode(newLightMode); // Update the state
-
-    // Set the body attribute based on the new state
-    if (newLightMode) {
-      LightMode(); // If newLightMode is true, set light mode
-    } else {
-      DarkMode(); // Otherwise, set dark mode
-    }
+    const newLightMode = !lightMode; // Toggle mode
+    setLightMode(newLightMode); // Update state
+    applyTheme(newLightMode); // Apply theme
+    localStorage.setItem("theme", newLightMode ? "light" : "dark"); // Save preference
   };
+
+  // Load theme preference on component mount
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    const isLightMode = savedTheme === "light"; // Check if light mode is saved
+    setLightMode(isLightMode); // Set state based on saved preference
+    applyTheme(isLightMode); // Apply theme based on preference
+    setIsHydrated(true); // Mark as hydrated
+  }, []);
+
+  // Only render once hydration is complete
+  if (!isHydrated) return null;
 
   return (
     <>
       <main>
-     
         <Aside />
         <div className="main-content mt-[100px]">
-        <span class="red-circle"></span>
-        <span class="purple-circle"></span>
+          <span className="red-circle"></span>
+          <span className="purple-circle"></span>
           <nav className="navbar">
             <ul className="navbar-list">
               <li className="navbar-item" onClick={() => setActiveRoute("about")}>
@@ -55,12 +63,6 @@ const PersonalPortfolio = () => {
               <li className="navbar-item" onClick={() => setActiveRoute("portfolio")}>
                 <button className={`navbar-link ${activeRoute === "portfolio" ? "active" : ""}`}>
                   Portfolio
-                </button>
-              </li>
-
-              <li className="navbar-item" onClick={() => setActiveRoute("blog")}>
-                <button className={`navbar-link ${activeRoute === "blog" ? "active" : ""}`}>
-                  Blog
                 </button>
               </li>
 
