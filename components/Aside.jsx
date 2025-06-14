@@ -1,5 +1,5 @@
 'use client'
-import { avtar } from "@/public/assets/Data";
+import { mnnan } from "@/public/assets/Data";
 import Image from "next/image";
 import React, { useState } from "react";
 import { MdMailOutline, MdPhone, MdCalendarToday, MdLocationOn } from "react-icons/md";
@@ -11,7 +11,7 @@ const Aside = () => {
     <aside className={`sidebar ${show ? 'active':''}`}>
       <div className="sidebar-info">
         <Image
-          src={avtar}
+          src={mnnan}
           alt="Manan Mazhar"
           className="w-auto h-auto avatar-box"
           height={100}
